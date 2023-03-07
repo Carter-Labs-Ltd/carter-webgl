@@ -26,7 +26,7 @@ namespace Carter {
     }
 
 
-    public class Agent : MonoBehaviour
+     public class Agent : MonoBehaviour
     {
         public SocketIOUnity socket;
 
@@ -128,8 +128,28 @@ namespace Carter {
             }
         }
 
+        public void listen(){           
+         
+        }
 
-       
+        public string stopListening(){
+            return null;
+        }
+
+        public void say(string audioId){
+           
+          
+        }
+
+        public void sendAudio(){
+
+        }
+
+        public IEnumerator PlayAudio(string url)
+        {
+          return null;
+        }
+      
 
     }
 }
