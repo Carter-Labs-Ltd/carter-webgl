@@ -1,0 +1,19 @@
+{
+    "name": "com.carter.carter",
+    "version": "0.0.2",
+    "displayName": "Carter",
+    "description": "Make your NPCs Talk",
+    "unity": "2019.1",
+    "unityRelease": "0b5",
+    "documentationUrl": "https://example.com/",
+    "changelogUrl": "https://example.com/changelog.html",
+    "licensesUrl": "https://example.com/licensing.html",
+    "dependencies": {
+        "com.itisnajim.socketiounity": "1.1.4"
+    },
+    "author": {
+        "name": "Carter Labs",
+        "email": "hello@carterapi.com",
+        "url": "https://carterapi.com"
+    }
+}
