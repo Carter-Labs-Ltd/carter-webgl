@@ -48,14 +48,7 @@ namespace Carter {
         OnMessage onMessage { get; set;}
         OnMessage onDictate { get; set;}
         OnVoice onVoice { get; set;}
-        Listener listener;
-
-
-        public void StartListening(){
-            listener = gameObject.AddComponent<Listener>();
-        }
-
-
+       
         public void init(string apiKey, string playerId, string url, OnConnect onConnect, OnDisconnect onDisconnect, OnMessage onMessage, OnVoice onVoice, OnMessage onDictate = null)
         {
             this.apiKey = apiKey;
@@ -136,60 +129,7 @@ namespace Carter {
         }
 
 
-        // AUDIO //
-
-        public void listen(){
-            listener.StartListening();
-        }
-
-        public string stopListening(){
-            return listener.StopListening();
-        }
-
-        public void say(string audioId){
-            StartCoroutine(PlayAudio(url + "/speak/" + audioId));
-        }
-
-        public void sendAudio(){
-
-            string base64 = stopListening();
-
-            if(base64 != null){
-                Debug.Log("Sending audio");
-
-                if (socket == null) {
-                    Debug.Log("Error sending message, socket is null");
-                    return;
-                } else {
-                    socket.EmitStringAsJSON("voice_message", "{\"audio\": \"" + base64 + "\", \"apiKey\": \"" + this.apiKey + "\", \"playerId\": \"" + this.playerId + "\"}");
-                }
-            }
-        }
-
-        public IEnumerator PlayAudio(string url)
-        {
-            Debug.Log("Playing audio from: " + url);
-        
-            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
-            {
-                yield return www.SendWebRequest();
-
-                if (www.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.Log(www.error);
-                }
-                else
-                {
-                    // Debug.Log("Playing audio");
-                    AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
-                    AudioSource audioSource2 = gameObject.AddComponent<AudioSource>();
-                    audioSource2.clip = myClip;
-                    audioSource2.Play();
-                    www.Dispose();
-                }
-            }
-        }
-
+       
 
     }
 }
